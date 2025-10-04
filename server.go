@@ -33,14 +33,6 @@ type DolarResponse struct {
 	Bid string `json:"bid"`
 }
 
-// Consumir a API: https://economia.awesomeapi.com.br/json/last/USD-BRL [ ]
-// Retornar o JSON apenas do valor atual do dolar (campo Bid) para o client [ ]
-// Registrar no banco de dados SQLite cada cotação recebida [ ]
-
-// Timeouts:
-// - chamar a API de cotação do dólar deverá ser de 200ms
-// - persistir os dados no banco deverá ser de 10ms
-
 func saveDolarQuotationInDatabase(response ApiResponse) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
 	defer cancel()
