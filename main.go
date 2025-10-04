@@ -1,5 +1,11 @@
 package main
 
+import (
+	"time"
+)
+
 func main() {
-	StartServer()
+	go StartServer()
+	time.Sleep(100 * time.Millisecond)
+	Test()
 }
