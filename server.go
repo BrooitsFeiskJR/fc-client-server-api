@@ -34,7 +34,7 @@ type DolarResponse struct {
 }
 
 func saveDolarQuotationInDatabase(response ApiResponse) error {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
 	defer cancel()
 
 	db, err := sql.Open("sqlite3", "quotations.db")
@@ -64,6 +64,7 @@ func saveDolarQuotationInDatabase(response ApiResponse) error {
 func cotacaoHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Metodo não permitido", http.StatusMethodNotAllowed)
+		return
 	}
 	fmt.Println("Buscando informação do dolar")
 	ctx, cancel := context.WithTimeout(context.Background(), 200*time.Second)
