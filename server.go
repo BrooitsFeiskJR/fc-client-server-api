@@ -67,7 +67,7 @@ func cotacaoHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Println("Buscando informação do dolar")
-	ctx, cancel := context.WithTimeout(context.Background(), 200*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 200*time.Millisecond)
 	defer cancel()
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://economia.awesomeapi.com.br/json/last/USD-BRL", nil)
 	if err != nil {
